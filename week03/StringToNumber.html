@@ -1,0 +1,37 @@
+<script>
+    function stringToNumber(str,x){
+        if(arguments.length<2){
+            x=10;
+        }
+        var chars=str.split('');
+        var num=0;
+        var i=0;
+        while(i<chars.length && chars[i]!='.'){
+            num=num*x;
+            num+=chars[i].codePointAt(0)-"0".codePointAt();
+            i++;
+        }
+        if(chars[i]==='.'){
+           i++;
+        }
+        var fraction=1;
+        while(i<chars.length){
+            fraction=fraction/x;
+            num+=(chars[i].codePointAt(0)-"0".codePointAt())*fraction;
+        
+        }
+        return num;
+    }
+    console.log(stringToNumber('10.0123'));
+    function numberToString(num,x){
+      var integer=num-Math.floor(num);
+      var fraction=num-integer;
+      var string='';
+      while(integer>0){
+        string=String(integer % x)+string;
+        integer=Math.floor(integer/x);
+      }
+        return num;
+    }
+    console.log(numberToString(100));
+</script>
