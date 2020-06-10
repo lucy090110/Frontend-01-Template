@@ -1,0 +1,976 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><table>
+<thead>
+<tr>
+<th>NO.</th>
+<th>Specification</th>
+<th>Property</th>
+<th>Status</th>
+<th>Subtotal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/" rel="nofollow">CSS  Inline  Layout  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#dominant-baseline-property" rel="nofollow">dominant-baseline</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#transverse-alignment" rel="nofollow">vertical-align</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#baseline-source" rel="nofollow">baseline-source</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#alignment-baseline-property" rel="nofollow">alignment-baseline</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#baseline-shift-property" rel="nofollow">baseline-shift</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#sTypoAscender" rel="nofollow">line-height</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#line-sizing-property" rel="nofollow">line-sizing</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#leading-trim-over" rel="nofollow">leading-trim-over</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#leading-trim-under" rel="nofollow">leading-trim-under</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#leading-trim-shorthand" rel="nofollow">leading-trim</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#line-fill" rel="nofollow">inline-sizing</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#sizing-drop-initials" rel="nofollow">initial-letter</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#aligning-initial-letter" rel="nofollow">initial-letter-align</a>, <a href="https://www.w3.org/TR/2020/WD-css-inline-3-20200604/#initial-letter-wrapping" rel="nofollow">initial-letter-wrap</a></td>
+<td>WorkingDraft</td>
+<td>14</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-contain-2-20200603/" rel="nofollow">CSS  Containment  Module  Level&nbsp;2</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-contain-2-20200603/#contain-property" rel="nofollow">contain</a>, <a href="https://www.w3.org/TR/2020/WD-css-contain-2-20200603/#content-visibility" rel="nofollow">content-visibility</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/" rel="nofollow">CSS  Overflow  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#overflow-properties" rel="nofollow">overflow-x</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#overflow-properties" rel="nofollow">overflow-y</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#overflow-properties" rel="nofollow">overflow</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#overflow-clip-margin" rel="nofollow">overflow-clip-margin</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#logical" rel="nofollow">overflow-inline</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#logical" rel="nofollow">overflow-block</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#text-overflow" rel="nofollow">text-overflow</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#block-ellipsis" rel="nofollow">block-ellipsis</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#line-clamp" rel="nofollow">line-clamp</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#max-lines" rel="nofollow">max-lines</a>, <a href="https://www.w3.org/TR/2020/WD-css-overflow-3-20200603/#continue" rel="nofollow">continue</a></td>
+<td>WorkingDraft</td>
+<td>11</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-sizing-4-20200526/" rel="nofollow">CSS  Box  Sizing  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-sizing-4-20200526/#aspect-ratio" rel="nofollow">aspect-ratio</a>, <a href="https://www.w3.org/TR/2020/WD-css-sizing-4-20200526/#intrinsic-size-override" rel="nofollow">contain-intrinsic-size</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/" rel="nofollow">CSS  Positioned  Layout  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#position-property" rel="nofollow">position</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">top</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">right</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">bottom</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">left</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">inset-block-start</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">inset-inline-start</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">inset-block-end</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#insets" rel="nofollow">inset-inline-end</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#inset-shorthands" rel="nofollow">inset-block</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#inset-shorthands" rel="nofollow">inset-inline</a>, <a href="https://www.w3.org/TR/2020/WD-css-position-3-20200519/#inset-shorthands" rel="nofollow">inset</a></td>
+<td>WorkingDraft</td>
+<td>12</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://www.w3.org/TR/2020/CR-css-display-3-20200519/" rel="nofollow">CSS  Display  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/CR-css-display-3-20200519/#the-display-properties" rel="nofollow">display</a></td>
+<td>CandidateRecommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/" rel="nofollow">CSS  Text  Decoration  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-line-property" rel="nofollow">text-decoration-line</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-style-property" rel="nofollow">text-decoration-style</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-color-property" rel="nofollow">text-decoration-color</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-width-property" rel="nofollow">text-decoration-thickness</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-property" rel="nofollow">text-decoration</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-underline-position-property" rel="nofollow">text-underline-position</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#underline-offset" rel="nofollow">text-underline-offset</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#issue-e6a42afa" rel="nofollow">text-decoration-skip</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-skip-self-property" rel="nofollow">text-decoration-skip-self</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-skip-box-property" rel="nofollow">text-decoration-skip-box</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-skip-inset-property" rel="nofollow">text-decoration-skip-inset</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-skip-spaces-property" rel="nofollow">text-decoration-skip-spaces</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-decoration-skip-ink-property" rel="nofollow">text-decoration-skip-ink</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-emphasis-style-property" rel="nofollow">text-emphasis-style</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-emphasis-color-property" rel="nofollow">text-emphasis-color</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-emphasis-property" rel="nofollow">text-emphasis</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-emphasis-position-property" rel="nofollow">text-emphasis-position</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#issue-c3697583" rel="nofollow">text-emphasis-skip</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-decor-4-20200506/#text-shadow-property" rel="nofollow">text-shadow</a></td>
+<td>WorkingDraft</td>
+<td>19</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-ruby-1-20200429/" rel="nofollow">CSS  Ruby  Layout  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-ruby-1-20200429/#rubypos" rel="nofollow">ruby-position</a>, <a href="https://www.w3.org/TR/2020/WD-css-ruby-1-20200429/#collapsed-ruby" rel="nofollow">ruby-merge</a>, <a href="https://www.w3.org/TR/2020/WD-css-ruby-1-20200429/#ruby-align-property" rel="nofollow">ruby-align</a>, <a href="https://www.w3.org/TR/2020/WD-css-ruby-1-20200429/#ruby-overhang" rel="nofollow">ruby-overhang</a></td>
+<td>WorkingDraft</td>
+<td>4</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/" rel="nofollow">CSS  Text  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-transform-property" rel="nofollow">text-transform</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#white-space-property" rel="nofollow">white-space</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#tab-size-property" rel="nofollow">tab-size</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#word-break-property" rel="nofollow">word-break</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#line-break-property" rel="nofollow">line-break</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#hyphenation" rel="nofollow">hyphens</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#overflow-wrap-property" rel="nofollow">overflow-wrap</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#overflow-wrap-property" rel="nofollow">word-wrap</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-align-property" rel="nofollow">text-align</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-align-all-property" rel="nofollow">text-align-all</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-align-last-property" rel="nofollow">text-align-last</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-justify-property" rel="nofollow">text-justify</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#word-spacing-property" rel="nofollow">word-spacing</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#letter-spacing-property" rel="nofollow">letter-spacing</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#text-indent-property" rel="nofollow">text-indent</a>, <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#hanging-punctuation-property" rel="nofollow">hanging-punctuation</a></td>
+<td>WorkingDraft</td>
+<td>16</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/" rel="nofollow">CSS  Box  Model  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#margin-physical" rel="nofollow">margin-top</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#margin-physical" rel="nofollow">margin-right</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#margin-physical" rel="nofollow">margin-bottom</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#margin-physical" rel="nofollow">margin-left</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#margin-shorthand" rel="nofollow">margin</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#padding-physical" rel="nofollow">padding-top</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#padding-physical" rel="nofollow">padding-right</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#padding-physical" rel="nofollow">padding-bottom</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#padding-physical" rel="nofollow">padding-left</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-3-20200421/#padding-shorthand" rel="nofollow">padding</a></td>
+<td>WorkingDraft</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/" rel="nofollow">CSS  Box  Alignment  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#align-justify-content" rel="nofollow">align-content</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#align-justify-content" rel="nofollow">justify-content</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#place-content" rel="nofollow">place-content</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#justify-self-property" rel="nofollow">justify-self</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#align-self-property" rel="nofollow">align-self</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#place-self-property" rel="nofollow">place-self</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#justify-items-property" rel="nofollow">justify-items</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#align-items-property" rel="nofollow">align-items</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#place-items-property" rel="nofollow">place-items</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#column-row-gap" rel="nofollow">row-gap</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#column-row-gap" rel="nofollow">column-gap</a>, <a href="https://www.w3.org/TR/2020/WD-css-align-3-20200421/#gap-shorthand" rel="nofollow">gap</a></td>
+<td>WorkingDraft</td>
+<td>12</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/" rel="nofollow">CSS  Box  Model  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-physical" rel="nofollow">margin-top</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-physical" rel="nofollow">margin-right</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-physical" rel="nofollow">margin-bottom</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-physical" rel="nofollow">margin-left</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-shorthand" rel="nofollow">margin</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#margin-trim" rel="nofollow">margin-trim</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#padding-physical" rel="nofollow">padding-top</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#padding-physical" rel="nofollow">padding-right</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#padding-physical" rel="nofollow">padding-bottom</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#padding-physical" rel="nofollow">padding-left</a>, <a href="https://www.w3.org/TR/2020/WD-css-box-4-20200421/#padding-shorthand" rel="nofollow">padding</a></td>
+<td>WorkingDraft</td>
+<td>11</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-color-adjust-1-20200402/" rel="nofollow">CSS  Color  Adjustment  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-color-adjust-1-20200402/#color-scheme-prop" rel="nofollow">color-scheme</a>, <a href="https://www.w3.org/TR/2020/WD-css-color-adjust-1-20200402/#forced-color-adjust-prop" rel="nofollow">forced-color-adjust</a>, <a href="https://www.w3.org/TR/2020/WD-css-color-adjust-1-20200402/#perf" rel="nofollow">color-adjust</a></td>
+<td>WorkingDraft</td>
+<td>3</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/" rel="nofollow">CSS  Transforms  Module  Level&nbsp;2</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#individual-transforms" rel="nofollow">translate</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#individual-transforms" rel="nofollow">rotate</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#individual-transforms" rel="nofollow">scale</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#transform-style-property" rel="nofollow">transform-style</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#perspective-property" rel="nofollow">perspective</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#perspective-origin-property" rel="nofollow">perspective-origin</a>, <a href="https://www.w3.org/TR/2020/WD-css-transforms-2-20200303/#backface-visibility-property" rel="nofollow">backface-visibility</a></td>
+<td>WorkingDraft</td>
+<td>7</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-scroll-anchoring-1-20200211/" rel="nofollow">CSS  Scroll  Anchoring  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-scroll-anchoring-1-20200211/#exclusion-api" rel="nofollow">overflow-anchor</a></td>
+<td>WorkingDraft</td>
+<td>1</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/" rel="nofollow">CSS  Basic  User  Interface  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#outline" rel="nofollow">outline</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#outline-width" rel="nofollow">outline-width</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#outline-style" rel="nofollow">outline-style</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#outline-color" rel="nofollow">outline-color</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#outline-offset" rel="nofollow">outline-offset</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#resize" rel="nofollow">resize</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#cursor" rel="nofollow">cursor</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#caret-color" rel="nofollow">caret-color</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#caret-shape" rel="nofollow">caret-shape</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#caret" rel="nofollow">caret</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#nav-dir" rel="nofollow">nav-up</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#nav-dir" rel="nofollow">nav-right</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#nav-dir" rel="nofollow">nav-down</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#nav-dir" rel="nofollow">nav-left</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#content-selection" rel="nofollow">user-select</a>, <a href="https://www.w3.org/TR/2020/WD-css-ui-4-20200124/#appearance-switching" rel="nofollow">appearance</a></td>
+<td>WorkingDraft</td>
+<td>16</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/" rel="nofollow">CSS  Writing  Modes  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#direction" rel="nofollow">direction</a>, <a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#unicode-bidi" rel="nofollow">unicode-bidi</a>, <a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#block-flow" rel="nofollow">writing-mode</a>, <a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#text-orientation" rel="nofollow">text-orientation</a>, <a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#glyph-orientation" rel="nofollow">glyph-orientation-vertical</a>, <a href="https://www.w3.org/TR/2019/REC-css-writing-modes-3-20191210/#text-combine-upright" rel="nofollow">text-combine-upright</a></td>
+<td>Recommendation</td>
+<td>6</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-nav-1-20191126/" rel="nofollow">CSS  Spatial  Navigation  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-nav-1-20191126/#container" rel="nofollow">spatial-navigation-contain</a>, <a href="https://www.w3.org/TR/2019/WD-css-nav-1-20191126/#css-property-spatialnavigationaction" rel="nofollow">spatial-navigation-action</a>, <a href="https://www.w3.org/TR/2019/WD-css-nav-1-20191126/#css-property-spatialnavigationfunction" rel="nofollow">spatial-navigation-function</a></td>
+<td>WorkingDraft</td>
+<td>3</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a href="https://www.w3.org/TR/2019/REC-css-contain-1-20191121/" rel="nofollow">CSS  Containment  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/REC-css-contain-1-20191121/#contain-property" rel="nofollow">contain</a></td>
+<td>Recommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/" rel="nofollow">CSS  Text  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#word-boundary-detection" rel="nofollow">word-boundary-detection</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#word-boundary-expansion" rel="nofollow">word-boundary-expansion</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#issue-257c8a37" rel="nofollow">text-space-collapse</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#white-space-trim" rel="nofollow">text-space-trim</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#text-wrap" rel="nofollow">text-wrap</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#wrap-before" rel="nofollow">wrap-before</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#wrap-before" rel="nofollow">wrap-after</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#wrap-inside" rel="nofollow">wrap-inside</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#white-space-property" rel="nofollow">white-space</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#hyphenate-character" rel="nofollow">hyphenate-character</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#hyphenate-size-limits" rel="nofollow">hyphenate-limit-zone</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#hyphenate-char-limits" rel="nofollow">hyphenate-limit-chars</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#hyphenate-line-limits" rel="nofollow">hyphenate-limit-lines</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#hyphenate-line-limits" rel="nofollow">hyphenate-limit-last</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#text-group-align-property" rel="nofollow">text-group-align</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#line-padding-property" rel="nofollow">line-padding</a>, <a href="https://www.w3.org/TR/2019/WD-css-text-4-20191113/#text-spacing-property" rel="nofollow">text-spacing</a></td>
+<td>WorkingDraft</td>
+<td>17</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/" rel="nofollow">CSS  Fonts  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-family-prop" rel="nofollow">font-family</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-weight-prop" rel="nofollow">font-weight</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-stretch-prop" rel="nofollow">font-stretch</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-style-prop" rel="nofollow">font-style</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-size-prop" rel="nofollow">font-size</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-size-adjust-prop" rel="nofollow">font-size-adjust</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-prop" rel="nofollow">font</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-synthesis-weight" rel="nofollow">font-synthesis-weight</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-synthesis-style" rel="nofollow">font-synthesis-style</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-synthesis-small-caps" rel="nofollow">font-synthesis-small-caps</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-synthesis" rel="nofollow">font-synthesis</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-kerning-prop" rel="nofollow">font-kerning</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-ligatures-prop" rel="nofollow">font-variant-ligatures</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-position-prop" rel="nofollow">font-variant-position</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-caps-prop" rel="nofollow">font-variant-caps</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-numeric-prop" rel="nofollow">font-variant-numeric</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-alternates-prop" rel="nofollow">font-variant-alternates</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-east-asian-prop" rel="nofollow">font-variant-east-asian</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-prop" rel="nofollow">font-variant</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-feature-settings-prop" rel="nofollow">font-feature-settings</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-language-override-prop" rel="nofollow">font-language-override</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-optical-sizing-def" rel="nofollow">font-optical-sizing</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variation-settings-def" rel="nofollow">font-variation-settings</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-palette-prop" rel="nofollow">font-palette</a>, <a href="https://www.w3.org/TR/2019/WD-css-fonts-4-20191113/#font-variant-emoji-prop" rel="nofollow">font-variant-emoji</a></td>
+<td>WorkingDraft</td>
+<td>25</td>
+</tr>
+<tr>
+<td>22</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-color-4-20191105/" rel="nofollow">CSS  Color  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-color-4-20191105/#the-color-property" rel="nofollow">color</a>, <a href="https://www.w3.org/TR/2019/WD-css-color-4-20191105/#transparency" rel="nofollow">opacity</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>23</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/" rel="nofollow">CSS  Multi-column  Layout  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#cw" rel="nofollow">column-width</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#cc" rel="nofollow">column-count</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#columns" rel="nofollow">columns</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#crc" rel="nofollow">column-rule-color</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#crs" rel="nofollow">column-rule-style</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#crw" rel="nofollow">column-rule-width</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#cr" rel="nofollow">column-rule</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#column-span" rel="nofollow">column-span</a>, <a href="https://www.w3.org/TR/2019/WD-css-multicol-1-20191015/#cf" rel="nofollow">column-fill</a></td>
+<td>WorkingDraft</td>
+<td>9</td>
+</tr>
+<tr>
+<td>24</td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-images-3-20191010/" rel="nofollow">CSS  Images  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-images-3-20191010/#the-object-fit" rel="nofollow">object-fit</a>, <a href="https://www.w3.org/TR/2019/CR-css-images-3-20191010/#the-object-position" rel="nofollow">object-position</a>, <a href="https://www.w3.org/TR/2019/CR-css-images-3-20191010/#the-image-orientation" rel="nofollow">image-orientation</a>, <a href="https://www.w3.org/TR/2019/CR-css-images-3-20191010/#the-image-rendering" rel="nofollow">image-rendering</a></td>
+<td>CandidateRecommendation</td>
+<td>4</td>
+</tr>
+<tr>
+<td>25</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/" rel="nofollow">CSS  Lists  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#image-markers" rel="nofollow">list-style-image</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#text-markers" rel="nofollow">list-style-type</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#list-style-position-property" rel="nofollow">list-style-position</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#list-style-property" rel="nofollow">list-style</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#marker-side" rel="nofollow">marker-side</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#counter-reset" rel="nofollow">counter-reset</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#increment-set" rel="nofollow">counter-increment</a>, <a href="https://www.w3.org/TR/2019/WD-css-lists-3-20190817/#increment-set" rel="nofollow">counter-set</a></td>
+<td>WorkingDraft</td>
+<td>8</td>
+</tr>
+<tr>
+<td>26</td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/" rel="nofollow">CSS  Text  Decoration  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-decoration-line-property" rel="nofollow">text-decoration-line</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-decoration-style-property" rel="nofollow">text-decoration-style</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-decoration-color-property" rel="nofollow">text-decoration-color</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-decoration-property" rel="nofollow">text-decoration</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-underline-position-property" rel="nofollow">text-underline-position</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-emphasis-style-property" rel="nofollow">text-emphasis-style</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-emphasis-color-property" rel="nofollow">text-emphasis-color</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-emphasis-property" rel="nofollow">text-emphasis</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-emphasis-position-property" rel="nofollow">text-emphasis-position</a>, <a href="https://www.w3.org/TR/2019/CR-css-text-decor-3-20190813/#text-shadow-property" rel="nofollow">text-shadow</a></td>
+<td>CandidateRecommendation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>27</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/" rel="nofollow">CSS  Generated  Content  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#content-property" rel="nofollow">content</a>, <a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#quotes-property" rel="nofollow">quotes</a>, <a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#string-set" rel="nofollow">string-set</a>, <a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#bookmark-level" rel="nofollow">bookmark-level</a>, <a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#bookmark-label" rel="nofollow">bookmark-label</a>, <a href="https://www.w3.org/TR/2019/WD-css-content-3-20190802/#bookmark-state" rel="nofollow">bookmark-state</a></td>
+<td>WorkingDraft</td>
+<td>6</td>
+</tr>
+<tr>
+<td>28</td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/" rel="nofollow">CSS  Writing  Modes  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#direction" rel="nofollow">direction</a>, <a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#unicode-bidi" rel="nofollow">unicode-bidi</a>, <a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#block-flow" rel="nofollow">writing-mode</a>, <a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#text-orientation" rel="nofollow">text-orientation</a>, <a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#glyph-orientation" rel="nofollow">glyph-orientation-vertical</a>, <a href="https://www.w3.org/TR/2019/CR-css-writing-modes-4-20190730/#text-combine-upright" rel="nofollow">text-combine-upright</a></td>
+<td>CandidateRecommendation</td>
+<td>6</td>
+</tr>
+<tr>
+<td>29</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/" rel="nofollow">CSS  Table  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/#table-layout-property" rel="nofollow">table-layout</a>, <a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/#border-collapse-property" rel="nofollow">border-collapse</a>, <a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/#border-spacing-property" rel="nofollow">border-spacing</a>, <a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/#caption-side-property" rel="nofollow">caption-side</a>, <a href="https://www.w3.org/TR/2019/WD-css-tables-3-20190727/#empty-cell-rendering" rel="nofollow">empty-cells</a></td>
+<td>WorkingDraft</td>
+<td>5</td>
+</tr>
+<tr>
+<td>30</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/" rel="nofollow">CSS  Overscroll  Behavior  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/#overscroll-behavior-properties" rel="nofollow">overscroll-behavior</a>, <a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/#overscroll-behavior-longhands-physical" rel="nofollow">overscroll-behavior-x</a>, <a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/#overscroll-behavior-longhands-physical" rel="nofollow">overscroll-behavior-y</a>, <a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/#overscroll-behavior-longhands-logical" rel="nofollow">overscroll-behavior-inline</a>, <a href="https://www.w3.org/TR/2019/WD-css-overscroll-1-20190606/#overscroll-behavior-longhands-logical" rel="nofollow">overscroll-behavior-block</a></td>
+<td>WorkingDraft</td>
+<td>5</td>
+</tr>
+<tr>
+<td>31</td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/" rel="nofollow">CSS  Intrinsic  &amp;  Extrinsic  Sizing  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#preferred-size-properties" rel="nofollow">width</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#preferred-size-properties" rel="nofollow">height</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#min-size-properties" rel="nofollow">min-width</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#min-size-properties" rel="nofollow">min-height</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#max-size-properties" rel="nofollow">max-width</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#max-size-properties" rel="nofollow">max-height</a>, <a href="https://www.w3.org/TR/2019/WD-css-sizing-3-20190522/#box-sizing" rel="nofollow">box-sizing</a></td>
+<td>WorkingDraft</td>
+<td>7</td>
+</tr>
+<tr>
+<td>32</td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/" rel="nofollow">CSS  Scroll  Snap  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#scroll-snap-type" rel="nofollow">scroll-snap-type</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#scroll-padding" rel="nofollow">scroll-padding</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#scroll-margin" rel="nofollow">scroll-margin</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#scroll-snap-align" rel="nofollow">scroll-snap-align</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#scroll-snap-stop" rel="nofollow">scroll-snap-stop</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-physical" rel="nofollow">scroll-padding-top</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-physical" rel="nofollow">scroll-padding-right</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-physical" rel="nofollow">scroll-padding-bottom</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-physical" rel="nofollow">scroll-padding-left</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-inline-start</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-block-start</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-inline-end</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-block-end</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-block</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#padding-longhands-logical" rel="nofollow">scroll-padding-inline</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-physical" rel="nofollow">scroll-margin-top</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-physical" rel="nofollow">scroll-margin-right</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-physical" rel="nofollow">scroll-margin-bottom</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-physical" rel="nofollow">scroll-margin-left</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-block-start</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-inline-start</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-block-end</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-inline-end</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-block</a>, <a href="https://www.w3.org/TR/2019/CR-css-scroll-snap-1-20190319/#margin-longhands-logical" rel="nofollow">scroll-margin-inline</a></td>
+<td>CandidateRecommendation</td>
+<td>25</td>
+</tr>
+<tr>
+<td>33</td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-transforms-1-20190214/" rel="nofollow">CSS  Transforms  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2019/CR-css-transforms-1-20190214/#transform-property" rel="nofollow">transform</a>, <a href="https://www.w3.org/TR/2019/CR-css-transforms-1-20190214/#transform-origin-property" rel="nofollow">transform-origin</a>, <a href="https://www.w3.org/TR/2019/CR-css-transforms-1-20190214/#transform-box" rel="nofollow">transform-box</a></td>
+<td>CandidateRecommendation</td>
+<td>3</td>
+</tr>
+<tr>
+<td>34</td>
+<td><a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/" rel="nofollow">Motion  Path  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-path-property" rel="nofollow">offset-path</a>, <a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-distance-property" rel="nofollow">offset-distance</a>, <a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-position-property" rel="nofollow">offset-position</a>, <a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-anchor-property" rel="nofollow">offset-anchor</a>, <a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-rotate-property" rel="nofollow">offset-rotate</a>, <a href="https://www.w3.org/TR/2018/WD-motion-1-20181218/#offset-shorthand" rel="nofollow">offset</a></td>
+<td>WorkingDraft</td>
+<td>6</td>
+</tr>
+<tr>
+<td>35</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/" rel="nofollow">CSS  Fragmentation  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#break-between" rel="nofollow">break-before</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#break-between" rel="nofollow">break-after</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#break-within" rel="nofollow">break-inside</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#widows-orphans" rel="nofollow">orphans</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#widows-orphans" rel="nofollow">widows</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#break-margins" rel="nofollow">margin-break</a>, <a href="https://www.w3.org/TR/2018/WD-css-break-4-20181218/#break-decoration" rel="nofollow">box-decoration-break</a></td>
+<td>WorkingDraft</td>
+<td>7</td>
+</tr>
+<tr>
+<td>36</td>
+<td><a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/" rel="nofollow">Filter  Effects  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/#FilterProperty" rel="nofollow">filter</a>, <a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/#FloodColorProperty" rel="nofollow">flood-color</a>, <a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/#FloodOpacityProperty" rel="nofollow">flood-opacity</a>, <a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/#ColorInterpolationFiltersProperty" rel="nofollow">color-interpolation-filters</a>, <a href="https://www.w3.org/TR/2018/WD-filter-effects-1-20181218/#LightingColorProperty" rel="nofollow">lighting-color</a></td>
+<td>WorkingDraft</td>
+<td>5</td>
+</tr>
+<tr>
+<td>37</td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/" rel="nofollow">CSS  Fragmentation  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#break-between" rel="nofollow">break-before</a>, <a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#break-between" rel="nofollow">break-after</a>, <a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#break-within" rel="nofollow">break-inside</a>, <a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#widows-orphans" rel="nofollow">orphans</a>, <a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#widows-orphans" rel="nofollow">widows</a>, <a href="https://www.w3.org/TR/2018/CR-css-break-3-20181204/#break-decoration" rel="nofollow">box-decoration-break</a></td>
+<td>CandidateRecommendation</td>
+<td>6</td>
+</tr>
+<tr>
+<td>38</td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/" rel="nofollow">CSS  Flexible  Box  Layout  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-direction-property" rel="nofollow">flex-direction</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-wrap-property" rel="nofollow">flex-wrap</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-flow-property" rel="nofollow">flex-flow</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#order-property" rel="nofollow">order</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-property" rel="nofollow">flex</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-grow-property" rel="nofollow">flex-grow</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-shrink-property" rel="nofollow">flex-shrink</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-basis-property" rel="nofollow">flex-basis</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#justify-content-property" rel="nofollow">justify-content</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#align-items-property" rel="nofollow">align-items</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#align-items-property" rel="nofollow">align-self</a>, <a href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#align-content-property" rel="nofollow">align-content</a></td>
+<td>CandidateRecommendation</td>
+<td>12</td>
+</tr>
+<tr>
+<td>39</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-page-3-20181018/" rel="nofollow">CSS  Paged  Media  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-page-3-20181018/#using-named-pages" rel="nofollow">page</a></td>
+<td>WorkingDraft</td>
+<td>1</td>
+</tr>
+<tr>
+<td>40</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/" rel="nofollow">CSS Transitions</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/#transition-property-property" rel="nofollow">transition-property</a>, <a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/#transition-duration-property" rel="nofollow">transition-duration</a>, <a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/#transition-timing-function-property" rel="nofollow">transition-timing-function</a>, <a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/#transition-delay-property" rel="nofollow">transition-delay</a>, <a href="https://www.w3.org/TR/2018/WD-css-transitions-1-20181011/#transition-shorthand-property" rel="nofollow">transition</a></td>
+<td>WorkingDraft</td>
+<td>5</td>
+</tr>
+<tr>
+<td>41</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/" rel="nofollow">CSS  Animations  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-name" rel="nofollow">animation-name</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-duration" rel="nofollow">animation-duration</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-timing-function" rel="nofollow">animation-timing-function</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-iteration-count" rel="nofollow">animation-iteration-count</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-direction" rel="nofollow">animation-direction</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-play-state" rel="nofollow">animation-play-state</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-delay" rel="nofollow">animation-delay</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation-fill-mode" rel="nofollow">animation-fill-mode</a>, <a href="https://www.w3.org/TR/2018/WD-css-animations-1-20181011/#animation" rel="nofollow">animation</a></td>
+<td>WorkingDraft</td>
+<td>9</td>
+</tr>
+<tr>
+<td>42</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-scrollbars-1-20180925/" rel="nofollow">CSS  Scrollbars  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-scrollbars-1-20180925/#scrollbar-color" rel="nofollow">scrollbar-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-scrollbars-1-20180925/#scrollbar-width" rel="nofollow">scrollbar-width</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>43</td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-cascade-4-20180828/" rel="nofollow">CSS  Cascading  and  Inheritance  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-cascade-4-20180828/#all-shorthand" rel="nofollow">all</a></td>
+<td>CandidateRecommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>44</td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-cascade-3-20180828/" rel="nofollow">CSS  Cascading  and  Inheritance  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2018/CR-css-cascade-3-20180828/#all-shorthand" rel="nofollow">all</a></td>
+<td>CandidateRecommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>45</td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/" rel="nofollow">CSS  Logical  Properties  and  Values  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">block-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">inline-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">min-block-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">min-inline-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">max-block-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#dimension-properties" rel="nofollow">max-inline-size</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-block-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-block-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-inline-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-inline-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-block</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#margin-properties" rel="nofollow">margin-inline</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-block-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-block-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-inline-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-inline-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-block</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset-inline</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#inset-properties" rel="nofollow">inset</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-block-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-block-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-inline-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-inline-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-block</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#padding-properties" rel="nofollow">padding-inline</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-block-start-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-block-end-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-inline-start-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-inline-end-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-block-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-width" rel="nofollow">border-inline-width</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-block-start-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-block-end-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-inline-start-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-inline-end-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-block-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-style" rel="nofollow">border-inline-style</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-block-start-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-block-end-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-inline-start-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-inline-end-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-block-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-color" rel="nofollow">border-inline-color</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-block-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-block-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-inline-start</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-inline-end</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-block</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-shorthands" rel="nofollow">border-inline</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-radius-shorthands" rel="nofollow">border-start-start-radius</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-radius-shorthands" rel="nofollow">border-start-end-radius</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-radius-shorthands" rel="nofollow">border-end-start-radius</a>, <a href="https://www.w3.org/TR/2018/WD-css-logical-1-20180827/#border-radius-shorthands" rel="nofollow">border-end-end-radius</a></td>
+<td>WorkingDraft</td>
+<td>53</td>
+</tr>
+<tr>
+<td>46</td>
+<td><a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/" rel="nofollow">CSS Basic User Interface Module Level 3 (CSS3 UI)</a></td>
+<td><a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#box-sizing" rel="nofollow">box-sizing</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#outline" rel="nofollow">outline</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#outline-width" rel="nofollow">outline-width</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#outline-style" rel="nofollow">outline-style</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#outline-color" rel="nofollow">outline-color</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#outline-offset" rel="nofollow">outline-offset</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#resize" rel="nofollow">resize</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#text-overflow" rel="nofollow">text-overflow</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#cursor" rel="nofollow">cursor</a>, <a href="https://www.w3.org/TR/2018/REC-css-ui-3-20180621/#caret-color" rel="nofollow">caret-color</a></td>
+<td>Recommendation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>47</td>
+<td><a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/" rel="nofollow">CSS  Grid  Layout  Module  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#track-sizing" rel="nofollow">grid-template-columns</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#track-sizing" rel="nofollow">grid-template-rows</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#grid-template-areas-property" rel="nofollow">grid-template-areas</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#explicit-grid-shorthand" rel="nofollow">grid-template</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#auto-tracks" rel="nofollow">grid-auto-columns</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#auto-tracks" rel="nofollow">grid-auto-rows</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#grid-auto-flow-property" rel="nofollow">grid-auto-flow</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#grid-shorthand" rel="nofollow">grid</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#line-placement" rel="nofollow">grid-row-start</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#line-placement" rel="nofollow">grid-column-start</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#line-placement" rel="nofollow">grid-row-end</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#line-placement" rel="nofollow">grid-column-end</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#placement-shorthands" rel="nofollow">grid-row</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#placement-shorthands" rel="nofollow">grid-column</a>, <a href="https://www.w3.org/TR/2017/CR-css-grid-1-20171214/#placement-shorthands" rel="nofollow">grid-area</a></td>
+<td>CandidateRecommendation</td>
+<td>15</td>
+</tr>
+<tr>
+<td>48</td>
+<td><a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/" rel="nofollow">CSS  Backgrounds  and  Borders  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-color" rel="nofollow">background-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-image" rel="nofollow">background-image</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-repeat" rel="nofollow">background-repeat</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-attachment" rel="nofollow">background-attachment</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-position" rel="nofollow">background-position</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-clip" rel="nofollow">background-clip</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-origin" rel="nofollow">background-origin</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background-size" rel="nofollow">background-size</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-background" rel="nofollow">background</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-color" rel="nofollow">border-top-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-color" rel="nofollow">border-right-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-color" rel="nofollow">border-bottom-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-color" rel="nofollow">border-left-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-color" rel="nofollow">border-color</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-style" rel="nofollow">border-top-style</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-style" rel="nofollow">border-right-style</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-style" rel="nofollow">border-bottom-style</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-style" rel="nofollow">border-left-style</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-style" rel="nofollow">border-style</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-width" rel="nofollow">border-top-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-width" rel="nofollow">border-right-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-width" rel="nofollow">border-bottom-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-width" rel="nofollow">border-left-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-width" rel="nofollow">border-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-shorthands" rel="nofollow">border-top</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-shorthands" rel="nofollow">border-right</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-shorthands" rel="nofollow">border-bottom</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-shorthands" rel="nofollow">border-left</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-shorthands" rel="nofollow">border</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-radius" rel="nofollow">border-top-left-radius</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-radius" rel="nofollow">border-top-right-radius</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-radius" rel="nofollow">border-bottom-right-radius</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-radius" rel="nofollow">border-bottom-left-radius</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-radius" rel="nofollow">border-radius</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image-source" rel="nofollow">border-image-source</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image-slice" rel="nofollow">border-image-slice</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image-width" rel="nofollow">border-image-width</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image-outset" rel="nofollow">border-image-outset</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image-repeat" rel="nofollow">border-image-repeat</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-border-image" rel="nofollow">border-image</a>, <a href="https://www.w3.org/TR/2017/CR-css-backgrounds-3-20171017/#the-box-shadow" rel="nofollow">box-shadow</a></td>
+<td>CandidateRecommendation</td>
+<td>41</td>
+</tr>
+<tr>
+<td>49</td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-overflow-4-20170613/" rel="nofollow">CSS  Overflow  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-overflow-4-20170613/#scollbar-gutter-property" rel="nofollow">scrollbar-gutter</a>, <a href="https://www.w3.org/TR/2017/WD-css-overflow-4-20170613/#fragmentation" rel="nofollow">continue</a>, <a href="https://www.w3.org/TR/2017/WD-css-overflow-4-20170613/#max-lines" rel="nofollow">max-lines</a></td>
+<td>WorkingDraft</td>
+<td>3</td>
+</tr>
+<tr>
+<td>50</td>
+<td><a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/" rel="nofollow">CSS  Fill  and  Stroke  Module  Level&nbsp;3</a></td>
+<td><a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-rule" rel="nofollow">fill-rule</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-break" rel="nofollow">fill-break</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-color" rel="nofollow">fill-color</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-image" rel="nofollow">fill-image</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-origin" rel="nofollow">fill-origin</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-position" rel="nofollow">fill-position</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-size" rel="nofollow">fill-size</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-repeat" rel="nofollow">fill-repeat</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-shorthand" rel="nofollow">fill</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#fill-opacity" rel="nofollow">fill-opacity</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-width" rel="nofollow">stroke-width</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-align" rel="nofollow">stroke-align</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-linecap" rel="nofollow">stroke-linecap</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-linejoin" rel="nofollow">stroke-linejoin</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-miterlimit" rel="nofollow">stroke-miterlimit</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-break" rel="nofollow">stroke-break</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-dasharray" rel="nofollow">stroke-dasharray</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-dashoffset" rel="nofollow">stroke-dashoffset</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#corner-control" rel="nofollow">stroke-dash-corner</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#issue-0d71cd23" rel="nofollow">stroke-dash-justify</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-color" rel="nofollow">stroke-color</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-image" rel="nofollow">stroke-image</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-origin" rel="nofollow">stroke-origin</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-position" rel="nofollow">stroke-position</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-size" rel="nofollow">stroke-size</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-repeat" rel="nofollow">stroke-repeat</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-shorthand" rel="nofollow">stroke</a>, <a href="https://www.w3.org/TR/2017/WD-fill-stroke-3-20170413/#stroke-opacity" rel="nofollow">stroke-opacity</a></td>
+<td>WorkingDraft</td>
+<td>28</td>
+</tr>
+<tr>
+<td>51</td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-images-4-20170413/" rel="nofollow">CSS  Image  Values  and  Replaced  Content  Module  Level&nbsp;4</a></td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-images-4-20170413/#the-image-resolution" rel="nofollow">image-resolution</a></td>
+<td>WorkingDraft</td>
+<td>1</td>
+</tr>
+<tr>
+<td>52</td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/" rel="nofollow">CSS Rhythmic Sizing</a></td>
+<td><a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#line-height-step" rel="nofollow">line-height-step</a>, <a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#block-step-size" rel="nofollow">block-step-size</a>, <a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#block-step-insert" rel="nofollow">block-step-insert</a>, <a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#block-step-align" rel="nofollow">block-step-align</a>, <a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#block-step-round" rel="nofollow">block-step-round</a>, <a href="https://www.w3.org/TR/2017/WD-css-rhythm-1-20170302/#block-step" rel="nofollow">block-step</a></td>
+<td>WorkingDraft</td>
+<td>6</td>
+</tr>
+<tr>
+<td>53</td>
+<td><a href="https://www.w3.org/TR/2016/WD-css-round-display-1-20161222/" rel="nofollow">CSS  Round  Display  Level&nbsp;1</a></td>
+<td><a href="https://www.w3.org/TR/2016/WD-css-round-display-1-20161222/#shape-inside-property" rel="nofollow">shape-inside</a>, <a href="https://www.w3.org/TR/2016/WD-css-round-display-1-20161222/#border-boundary-property" rel="nofollow">border-boundary</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>54</td>
+<td><a href="http://www.w3.org/TR/2016/WD-cssom-view-1-20160317/" rel="nofollow">CSSOM View Module</a></td>
+<td><a href="http://www.w3.org/TR/2016/WD-cssom-view-1-20160317/#smooth-scrolling" rel="nofollow">scroll-behavior</a></td>
+<td>WorkingDraft</td>
+<td>1</td>
+</tr>
+<tr>
+<td>55</td>
+<td><a href="http://www.w3.org/TR/2015/CR-css-variables-1-20151203/" rel="nofollow">CSS  Custom  Properties  for  Cascading  Variables  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2015/CR-css-variables-1-20151203/#defining-variables" rel="nofollow">--*</a></td>
+<td>CandidateRecommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>56</td>
+<td><a href="http://www.w3.org/TR/2015/CR-css-will-change-1-20151203/" rel="nofollow">CSS  Will  Change  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2015/CR-css-will-change-1-20151203/#will-change" rel="nofollow">will-change</a></td>
+<td>CandidateRecommendation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>57</td>
+<td><a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/" rel="nofollow">CSS Page Floats</a></td>
+<td><a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/#float-reference-property" rel="nofollow">float-reference</a>, <a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/#float-property" rel="nofollow">float</a>, <a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/#clearing_page_floats" rel="nofollow">clear</a>, <a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/#float-defer-property" rel="nofollow">float-defer</a>, <a href="http://www.w3.org/TR/2015/WD-css-page-floats-3-20150915/#the-float_offset-property" rel="nofollow">float-offset</a></td>
+<td>WorkingDraft</td>
+<td>5</td>
+</tr>
+<tr>
+<td>58</td>
+<td><a href="http://www.w3.org/TR/2015/WD-dpub-css-priorities-20150820/" rel="nofollow">Priorities for CSS from the Digital Publishing Interest Group</a></td>
+<td><a href="http://www.w3.org/TR/2015/WD-dpub-css-priorities-20150820/#hyphenation-dictionaries" rel="nofollow">hyphenate-patterns</a>, <a href="http://www.w3.org/TR/2015/WD-dpub-css-priorities-20150820/#min_length_of_last_line" rel="nofollow">min-length-of-last-line</a>, <a href="http://www.w3.org/TR/2015/WD-dpub-css-priorities-20150820/#example-5d951412" rel="nofollow">merge-sequential-page-numbers</a></td>
+<td>WorkingDraft</td>
+<td>3</td>
+</tr>
+<tr>
+<td>59</td>
+<td><a href="http://www.w3.org/TR/2015/WD-css3-exclusions-20150115/" rel="nofollow">CSS  Exclusions  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2015/WD-css3-exclusions-20150115/#wrap-flow-property" rel="nofollow">wrap-flow</a>, <a href="http://www.w3.org/TR/2015/WD-css3-exclusions-20150115/#wrap-through-property" rel="nofollow">wrap-through</a></td>
+<td>WorkingDraft</td>
+<td>2</td>
+</tr>
+<tr>
+<td>60</td>
+<td><a href="http://www.w3.org/TR/2015/CR-compositing-1-20150113/" rel="nofollow">Compositing  and  Blending  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2015/CR-compositing-1-20150113/#mix-blend-mode" rel="nofollow">mix-blend-mode</a>, <a href="http://www.w3.org/TR/2015/CR-compositing-1-20150113/#isolation" rel="nofollow">isolation</a>, <a href="http://www.w3.org/TR/2015/CR-compositing-1-20150113/#img_isolation" rel="nofollow">background-blend-mode</a></td>
+<td>CandidateRecommendation</td>
+<td>3</td>
+</tr>
+<tr>
+<td>61</td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/" rel="nofollow">CSS  Regions  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#the-flow-into-property" rel="nofollow">flow-into</a>, <a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#flow-from" rel="nofollow">flow-from</a>, <a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#region-flow-break" rel="nofollow">break-before</a>, <a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#region-flow-break" rel="nofollow">break-after</a>, <a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#region-flow-break" rel="nofollow">break-inside</a>, <a href="http://www.w3.org/TR/2014/WD-css-regions-1-20141009/#the-region-fragment-property" rel="nofollow">region-fragment</a></td>
+<td>WorkingDraft</td>
+<td>6</td>
+</tr>
+<tr>
+<td>62</td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-line-grid-1-20140916/" rel="nofollow">CSS  Line  Grid  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-line-grid-1-20140916/#line-grid" rel="nofollow">line-grid</a>, <a href="http://www.w3.org/TR/2014/WD-css-line-grid-1-20140916/#line-snap" rel="nofollow">line-snap</a>, <a href="http://www.w3.org/TR/2014/WD-css-line-grid-1-20140916/#issue-13c3b0a7" rel="nofollow">box-snap</a></td>
+<td>WorkingDraft</td>
+<td>3</td>
+</tr>
+<tr>
+<td>63</td>
+<td><a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/" rel="nofollow">CSS  Masking  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-clip-path" rel="nofollow">clip-path</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-clip-rule" rel="nofollow">clip-rule</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-image" rel="nofollow">mask-image</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-mode" rel="nofollow">mask-mode</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-repeat" rel="nofollow">mask-repeat</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-position" rel="nofollow">mask-position</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-clip" rel="nofollow">mask-clip</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-origin" rel="nofollow">mask-origin</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-size" rel="nofollow">mask-size</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-composite" rel="nofollow">mask-composite</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask" rel="nofollow">mask</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-source" rel="nofollow">mask-border-source</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-mode" rel="nofollow">mask-border-mode</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-slice" rel="nofollow">mask-border-slice</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-width" rel="nofollow">mask-border-width</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-outset" rel="nofollow">mask-border-outset</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border-repeat" rel="nofollow">mask-border-repeat</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-border" rel="nofollow">mask-border</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#the-mask-type" rel="nofollow">mask-type</a>, <a href="http://www.w3.org/TR/2014/CR-css-masking-1-20140826/#clip-property" rel="nofollow">clip</a></td>
+<td>CandidateRecommendation</td>
+<td>20</td>
+</tr>
+<tr>
+<td>64</td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/" rel="nofollow">CSS Generated Content for Paged Media Module</a></td>
+<td><a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#setting-named-strings-the-string-set-pro" rel="nofollow">string-set</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#" rel="nofollow">running</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#footnote-types" rel="nofollow">footnote-display</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#footnote-policy" rel="nofollow">footnote-policy</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#bookmark-level" rel="nofollow">bookmark-level</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#bookmark-label" rel="nofollow">bookmark-label</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#bookmark-state" rel="nofollow">bookmark-state</a>, <a href="http://www.w3.org/TR/2014/WD-css-gcpm-3-20140513/#" rel="nofollow">running</a></td>
+<td>WorkingDraft</td>
+<td>8</td>
+</tr>
+<tr>
+<td>65</td>
+<td><a href="http://www.w3.org/TR/2014/CR-css-shapes-1-20140320/" rel="nofollow">CSS  Shapes  Module  Level&nbsp;1</a></td>
+<td><a href="http://www.w3.org/TR/2014/CR-css-shapes-1-20140320/#shape-outside-property" rel="nofollow">shape-outside</a>, <a href="http://www.w3.org/TR/2014/CR-css-shapes-1-20140320/#shape-image-threshold-property" rel="nofollow">shape-image-threshold</a>, <a href="http://www.w3.org/TR/2014/CR-css-shapes-1-20140320/#shape-margin-property" rel="nofollow">shape-margin</a></td>
+<td>CandidateRecommendation</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+</body>
+</html>
