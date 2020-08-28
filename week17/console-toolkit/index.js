@@ -1,58 +1,43 @@
-# 组件化和工具链
+var ttys = require("ttys");
 
-## 工具链
+var stdin = ttys.stdin;
+var stdout = ttys.stdout;
 
-### yeoman
+stdin.setRawMode(true);
+stdin.resume();
+stdin.setEncoding("utf8");
 
-#### 使用
-
-```bash
-npm install -g yo
-```
-
-#### 初始化
-
-```js
-{
-  "name": "generator-name",
-  "version": "0.1.0",
-  "description": "",
-  "files": [
-    "generators"
-  ],
-  "keywords": ["yeoman-generator"],
-  "dependencies": {
-    "yeoman-generator": "^1.0.0"
-  },
-   "files": [
-    "app",
-    "router"
-  ]
+function getChar() {
+  return new Promise((resolve) => {
+    stdin.once("data", function (key) {
+      resolve(key);
+    });
+  });
 }
-```
 
-#### 项目结构
+function up(n = 1) {
+  stdout.write("\033[" + n + "A");
+}
 
-```js
-├───package.json
-└───generators/
-    ├───app/
-    │   └───index.js
-    └───router/
-        └───index.js
-```
+function down(n = 1) {
+  stdout.write("\033[" + n + "B");
+}
 
-#### 建立软链接
+function right(n = 1) {
+  stdout.write("\033[" + n + "C");
+}
 
->
-   这将安装您的项目依赖项，并将全局模块符号链接到本地​​文件
+function left(n = 1) {
+  stdout.write("\033[" + n + "D");
+}
 
-```bash
-npm link
-```
+void (async function () {
+  stdout.write("which framework do you want to use?\n");
+  let answer = await select(["vue", "react", "angular"]);
+  stdout.write("You selected " + answer + "\n");
+  process.exit();
+})();
 
-
-```js
 async function select(choices) {
   let selected = 0;
   for (let i = 0; i < choices.length; i++) {
@@ -95,4 +80,3 @@ async function select(choices) {
     }
   }
 }
-```

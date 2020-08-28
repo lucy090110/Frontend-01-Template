@@ -1,0 +1,21 @@
+{
+  "name": "generator-xieww",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "generator"
+  ],
+  "files": [
+    "app",
+    "router"
+  ],
+  "author": "xieww",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^4.11.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "<%= title %>",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register",
+    "coverage": "nyc mocha",
+    "start": "webpack-dev-server --mode=development --open --config  ./config/webpack.config.js",
+    "build": "webpack --mode=production --config ./config/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "xieww",
+  "license": "MIT"
+}

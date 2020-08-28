@@ -1,0 +1,14 @@
+{
+  "name": "publish-server-vanilla",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "xieww",
+  "license": "MIT",
+  "dependencies": {
+    "unzipper": "^0.10.11"
+  }
+}
